@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:unasman_library/util/const.dart';
 
-class BookItem extends StatelessWidget {
-  const BookItem({
+import 'member_text.dart';
+
+class MemberItem extends StatelessWidget {
+  const MemberItem({
     Key? key,
   }) : super(key: key);
 
@@ -20,6 +22,7 @@ class BookItem extends StatelessWidget {
         boxShadow: kDefaultCardShadow,
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           // image
           Expanded(
@@ -35,7 +38,6 @@ class BookItem extends StatelessWidget {
                 ),
               ),
             ),
-            flex: 2,
           ),
           Expanded(
             child: Padding(
@@ -48,21 +50,40 @@ class BookItem extends StatelessWidget {
                 children: [
                   FittedBox(
                     child: Text(
-                      "Visual Foxpro 9.0",
+                      "Kaco Jirris",
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
                   SizedBox(
                     height: kDefaultPadding / 4,
                   ),
-                  Text("SomeOne, S.Kom"),
+                  Text("2012329320"),
                   SizedBox(
                     height: kDefaultPadding,
                   ),
-                  Text(
-                    "CV. Media Tangerang, Ltb",
-                    style: Theme.of(context).textTheme.bodyText1,
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 15,
+                    children: [
+                      MemberText(
+                        label: 'Fakultas',
+                        text: 'Ilmu Komputer',
+                      ),
+                      MemberText(
+                        label: 'Jurusan',
+                        text: 'Sistem Informasi',
+                      ),
+                      MemberText(
+                        label: 'Nomor HP',
+                        text: '082284938439',
+                      ),
+                      MemberText(
+                        label: 'Alamat',
+                        text: 'Jln. Poros Mambu Desa Baru, Kec. Luyo',
+                      ),
+                    ],
                   ),
+
                   // Divider(),
                   SizedBox(
                     height: kDefaultPadding,

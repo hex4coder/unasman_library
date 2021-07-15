@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 import 'package:unasman_library/components/animations/slidein_fromtop.dart';
 import 'package:unasman_library/components/appbar_widget.dart';
+import 'package:unasman_library/components/loading/loading_controller.dart';
+import 'package:unasman_library/page/member/components/member_item.dart';
 import 'package:unasman_library/util/const.dart';
 
-import 'components/book_item.dart';
-
-class BookScreen extends StatelessWidget {
-  const BookScreen({Key? key}) : super(key: key);
+class MemberScreen extends StatelessWidget {
+  const MemberScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BookScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 50),
             shrinkWrap: true,
             itemBuilder: (_, index) => SlideInFromTopAnimation(
-              child: BookItem(),
+              child: MemberItem(),
             ),
             itemCount: 3,
           ),
@@ -29,12 +30,18 @@ class BookScreen extends StatelessWidget {
             leading: SizedBox(
               width: 50,
             ),
-            title: 'Daftar Buku',
-            iconTitle: FeatherIcons.book,
+            title: 'Anggota Perpustakaan',
+            iconTitle: FeatherIcons.creditCard,
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                final loadingController = Get.find<LoadingController>();
+
+                loadingController.showLoading('Menambahkan anggota');
+                await Future.delayed(Duration(seconds: 1));
+                loadingController.stopLoading();
+              },
               icon: Icon(
-                FeatherIcons.plusCircle,
+                FeatherIcons.userPlus,
                 color: kSecondaryColor,
               ),
             ),

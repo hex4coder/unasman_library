@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:unasman_library/components/loading/loading_controller.dart';
 import 'package:unasman_library/components/loading/loading_widget.dart';
 import 'package:unasman_library/page/book/book_screen.dart';
+import 'package:unasman_library/page/history/history_screen.dart';
+import 'package:unasman_library/page/member/member_screen.dart';
 import 'package:unasman_library/util/const.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,12 +48,8 @@ class _HomePageState extends State<HomePage>
             },
             children: [
               BookScreen(),
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.green,
-              )
+              MemberScreen(),
+              HistoryScreen(),
             ],
           ),
           Obx(
@@ -61,16 +59,8 @@ class _HomePageState extends State<HomePage>
           ),
         ],
       )),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-      //     _loadingController.showLoading('Loading data ...');
-      //     await Future.delayed(Duration(seconds: 2), () {
-      //       _loadingController.stopLoading();
-      //     });
-      //   },
-      //   child: Icon(FeatherIcons.search),
-      // ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: currentIndex,
         onTap: (index) {
           if (!mounted) return;
@@ -90,7 +80,7 @@ class _HomePageState extends State<HomePage>
               icon: Icon(
                 FeatherIcons.users,
               ),
-              label: 'Mahasiswa'),
+              label: 'Anggota'),
           BottomNavigationBarItem(
               icon: Icon(
                 FeatherIcons.activity,

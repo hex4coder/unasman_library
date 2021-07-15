@@ -6,7 +6,7 @@ class CustomAppbar extends StatelessWidget {
     Key? key,
     required this.title,
     required this.iconTitle,
-    required this.leading, 
+    required this.leading,
     required this.trailing,
   }) : super(key: key);
 
@@ -37,7 +37,8 @@ class CustomAppbar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
+          leading,
+          Spacer(),
           Row(
             children: [
               Icon(
@@ -53,6 +54,8 @@ class CustomAppbar extends StatelessWidget {
               ),
             ],
           ),
+          Spacer(),
+          trailing,
         ],
       ),
     );

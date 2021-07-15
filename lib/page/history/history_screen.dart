@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:unasman_library/components/animations/slidein_fromtop.dart';
 import 'package:unasman_library/components/appbar_widget.dart';
 import 'package:unasman_library/util/const.dart';
 
-import 'components/book_item.dart';
-
-class BookScreen extends StatelessWidget {
-  const BookScreen({Key? key}) : super(key: key);
+class HistoryScreen extends StatelessWidget {
+  const HistoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +15,7 @@ class BookScreen extends StatelessWidget {
           ListView.builder(
             padding: EdgeInsets.only(top: 50),
             shrinkWrap: true,
-            itemBuilder: (_, index) => SlideInFromTopAnimation(
-              child: BookItem(),
-            ),
+            itemBuilder: (_, index) => Container(),
             itemCount: 3,
           ),
 
@@ -29,8 +24,8 @@ class BookScreen extends StatelessWidget {
             leading: SizedBox(
               width: 50,
             ),
-            title: 'Daftar Buku',
-            iconTitle: FeatherIcons.book,
+            title: 'Peminjaman Buku',
+            iconTitle: FeatherIcons.barChart,
             trailing: IconButton(
               onPressed: () {},
               icon: Icon(
