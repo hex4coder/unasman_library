@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:get/get.dart';
 import 'package:unasman_library/components/animations/slidein_fromtop.dart';
 import 'package:unasman_library/components/appbar_widget.dart';
-import 'package:unasman_library/components/loading/loading_controller.dart';
 import 'package:unasman_library/page/member/components/member_item.dart';
+import 'package:unasman_library/services/ocr_service.dart';
 import 'package:unasman_library/util/const.dart';
 
 class MemberScreen extends StatelessWidget {
@@ -34,11 +33,8 @@ class MemberScreen extends StatelessWidget {
             iconTitle: FeatherIcons.creditCard,
             trailing: IconButton(
               onPressed: () async {
-                final loadingController = Get.find<LoadingController>();
-
-                loadingController.showLoading('Menambahkan anggota');
-                await Future.delayed(Duration(seconds: 1));
-                loadingController.stopLoading();
+                // buka kamera dengan image picker
+                await OCRService.scan(context);
               },
               icon: Icon(
                 FeatherIcons.userPlus,

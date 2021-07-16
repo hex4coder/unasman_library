@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:unasman_library/components/animations/slidein_fromtop.dart';
 import 'package:unasman_library/components/appbar_widget.dart';
+import 'package:unasman_library/page/history/components/history_item.dart';
 import 'package:unasman_library/util/const.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -15,7 +17,9 @@ class HistoryScreen extends StatelessWidget {
           ListView.builder(
             padding: EdgeInsets.only(top: 50),
             shrinkWrap: true,
-            itemBuilder: (_, index) => Container(),
+            itemBuilder: (_, index) => SlideInFromTopAnimation(
+              child: HistoryItem(),
+            ),
             itemCount: 3,
           ),
 

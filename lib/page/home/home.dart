@@ -6,7 +6,6 @@ import 'package:unasman_library/components/loading/loading_widget.dart';
 import 'package:unasman_library/page/book/book_screen.dart';
 import 'package:unasman_library/page/history/history_screen.dart';
 import 'package:unasman_library/page/member/member_screen.dart';
-import 'package:unasman_library/util/const.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
