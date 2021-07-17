@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:unasman_library/components/logo_widget.dart';
+import 'package:unasman_library/routes/route_name.dart';
 import 'package:unasman_library/util/const.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // setelah 5 detik, maka lanjut ke homepage
     Timer(Duration(seconds: 5), () {
-      Get.offAllNamed('/home');
+      Get.offAllNamed(RouteName.home);
     });
     super.initState();
   }

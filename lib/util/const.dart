@@ -15,3 +15,5 @@ final kDefaultCardShadow = [
     color: Colors.black.withOpacity(.1),
   )
 ];
+
+final kServerUrl = 'http://192.168.0.103:5000';
