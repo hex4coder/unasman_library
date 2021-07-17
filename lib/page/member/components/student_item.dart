@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:unasman_library/util/const.dart';
 
-import 'member_text.dart';
+import 'student_text.dart';
 
-class MemberItem extends StatelessWidget {
-  const MemberItem({
+class StudentItem extends StatelessWidget {
+  const StudentItem({
     Key? key,
   }) : super(key: key);
 
@@ -65,19 +65,19 @@ class MemberItem extends StatelessWidget {
                     spacing: 10,
                     runSpacing: 15,
                     children: [
-                      MemberText(
+                      StudentText(
                         label: 'Fakultas',
                         text: 'Ilmu Komputer',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Jurusan',
                         text: 'Sistem Informasi',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Nomor HP',
                         text: '082284938439',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Alamat',
                         text: 'Jln. Poros Mambu Desa Baru, Kec. Luyo',
                       ),

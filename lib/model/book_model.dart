@@ -28,7 +28,7 @@ class Book {
         judul: json["judul"],
         pengarang: json["pengarang"],
         penerbit: json["penerbit"],
-        foto: json["foto"],
+        foto: json["foto"] ?? '',
       );
 
   Map<String, dynamic> toMap() => {

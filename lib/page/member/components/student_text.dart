@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unasman_library/util/const.dart';
 
-class MemberText extends StatelessWidget {
-  const MemberText({
+class StudentText extends StatelessWidget {
+  const StudentText({
     Key? key,
     required this.label,
     required this.text,

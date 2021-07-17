@@ -10,46 +10,65 @@ import 'package:unasman_library/util/const.dart';
 import 'components/book_item.dart';
 
 class BookScreen extends StatelessWidget {
-  const BookScreen({Key? key}) : super(key: key);
+  BookScreen({Key? key}) : super(key: key);
+
+  final c = Get.find<BookC>();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          // list data
-          GetX<BookC>(builder: (c) {
-            if (c.$listBook.length < 1) {
-              // tidak ada buku
-            }
-
-            return ListView.builder(
-              padding: EdgeInsets.only(top: 50),
-              shrinkWrap: true,
-              itemBuilder: (_, index) => SlideInFromTopAnimation(
-                child: BookItem(),
-              ),
-              itemCount: 3,
+    return Stack(
+      children: [
+        // list data
+        Obx(() {
+          if (c.$listBook.length < 1) {
+            // tidak ada buku
+            return Center(
+              child: Text('Belum ada data'),
             );
-          }),
+          }
 
-          // app bar
-          CustomAppbar(
-            leading: SizedBox(
-              width: 50,
-            ),
-            title: 'Daftar Buku',
-            iconTitle: FeatherIcons.book,
-            trailing: IconButton(
-              onPressed: () => Get.toNamed(RouteName.addBook),
-              icon: Icon(
-                FeatherIcons.plusCircle,
-                color: kSecondaryColor,
+          return ListView.builder(
+            padding: EdgeInsets.only(top: 50),
+            shrinkWrap: true,
+            itemBuilder: (_, index) => SlideInFromTopAnimation(
+              child: BookItem(
+                book: c.$listBook[index],
               ),
             ),
+            itemCount: c.$listBook.length,
+          );
+        }),
+
+        // app bar
+        CustomAppbar(
+          leading: SizedBox(
+            width: 100,
           ),
-        ],
-      ),
+          title: 'Daftar Buku',
+          iconTitle: FeatherIcons.book,
+          trailing: Row(
+            children: [
+              IconButton(
+                onPressed: () async {
+                  await Get.toNamed(RouteName.addBook);
+                  await c.fetchBooks();
+                },
+                icon: Icon(
+                  FeatherIcons.plusCircle,
+                  color: kSecondaryColor,
+                ),
+              ),
+              IconButton(
+                onPressed: () async => await c.fetchBooks(),
+                icon: Icon(
+                  FeatherIcons.refreshCcw,
+                  color: kPrimaryColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

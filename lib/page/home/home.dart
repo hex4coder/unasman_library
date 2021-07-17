@@ -5,7 +5,7 @@ import 'package:unasman_library/components/loading/loading_controller.dart';
 import 'package:unasman_library/components/loading/loading_widget.dart';
 import 'package:unasman_library/page/book/book_screen.dart';
 import 'package:unasman_library/page/history/history_screen.dart';
-import 'package:unasman_library/page/member/member_screen.dart';
+import 'package:unasman_library/page/member/student_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage>
             },
             children: [
               BookScreen(),
-              MemberScreen(),
+              StudentScreen(),
               HistoryScreen(),
             ],
           ),

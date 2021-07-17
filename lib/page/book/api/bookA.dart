@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:get/get.dart';
@@ -13,19 +12,22 @@ class BookA extends GetConnect {
   void onInit() {
     httpClient.baseUrl = _bookUrl;
     httpClient.defaultContentType = 'application/json';
-    
   }
 
-  Future<Response> fetchBooks() => get(_bookUrl, contentType: 'application/json');
+  Future<Response> fetchBooks() =>
+      get(_bookUrl, contentType: 'application/json');
 
-  Future<Response> postBook(Book book, File image) {
+  Future<Response> postBook(Book book, File? image) {
     final mapData = book.toMap();
-    mapData.putIfAbsent(
-        'image', () => MultipartFile(image, filename: book.kode + '.jpg'));
+
+    if (image != null) {
+      mapData.putIfAbsent(
+          'image', () => MultipartFile(image, filename: book.kode + '.jpg'));
+    }
     final FormData form = FormData(mapData);
     return post(_bookUrl, form);
   }
 
   Future<Response> deleteBook(Book book) =>
-      delete(_bookUrl, query: book.toMap());
+      delete(_bookUrl, query: book.toMap(), contentType: 'application/json');
 }

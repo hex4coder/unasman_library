@@ -6,6 +6,7 @@ import 'package:unasman_library/routes/app_route.dart';
 import 'package:unasman_library/util/const.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 

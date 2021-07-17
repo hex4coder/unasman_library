@@ -15,6 +15,8 @@ class Student {
         required this.jurusan,
         required this.fakultas,
         required this.alamat,
+        required this.nomorhp,
+        required this.foto,
     });
 
     final String nama;
@@ -22,6 +24,8 @@ class Student {
     final String jurusan;
     final String fakultas;
     final String alamat;
+    final String nomorhp;
+    final String foto;
 
     factory Student.fromMap(Map<String, dynamic> json) => Student(
         nama: json["nama"],
@@ -29,6 +33,8 @@ class Student {
         jurusan: json["jurusan"],
         fakultas: json["fakultas"],
         alamat: json["alamat"],
+        nomorhp: json["nomorhp"],
+        foto: json["foto"],
     );
 
     Map<String, dynamic> toMap() => {
@@ -37,5 +43,7 @@ class Student {
         "jurusan": jurusan,
         "fakultas": fakultas,
         "alamat": alamat,
+        "nomorhp": nomorhp,
+        "foto": foto,
     };
 }

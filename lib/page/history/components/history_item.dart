@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:unasman_library/page/member/components/member_text.dart';
+import 'package:unasman_library/page/member/components/student_text.dart';
 import 'package:unasman_library/util/const.dart';
 
 class HistoryItem extends StatelessWidget {
@@ -92,27 +92,27 @@ class HistoryItem extends StatelessWidget {
                     spacing: 10,
                     runSpacing: 15,
                     children: [
-                      MemberText(
+                      StudentText(
                         label: 'Judul Buku',
                         text: 'Visual Foxpro',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Anggota',
                         text: 'Kaco Jirris',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Tanggal Peminjaman',
                         text: '20 Agustus 2021',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Tanggal Pengembalian',
                         text: '-',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Lama Peminjaman',
                         text: '-',
                       ),
-                      MemberText(
+                      StudentText(
                         label: 'Lama Peminjaman',
                         text: '20 hari',
                       ),

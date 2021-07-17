@@ -2,37 +2,37 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:unasman_library/components/loading/loading_controller.dart';
-import 'package:unasman_library/model/book_model.dart';
-import 'package:unasman_library/page/book/api/bookA.dart';
+import 'package:unasman_library/model/student_model.dart';
+import 'package:unasman_library/page/member/api/studentA.dart';
 import 'package:unasman_library/services/info_service.dart';
 
-class BookC extends GetxController {
+class StudentC extends GetxController {
   /// vars
-  var $listBook = <Book>[].obs;
+  var $listStudent = <Student>[].obs;
 
   @override
   void onInit() {
-    fetchBooks();
+    fetchStudents();
     super.onInit();
   }
 
-  Future<void> fetchBooks() async {
+  Future<void> fetchStudents() async {
     final lc = Get.find<LoadingController>();
 
     try {
       lc.showLoading('Memuat data buku...');
-      final response = await BookA().fetchBooks();
+      final response = await StudentA().fetchStudents();
       if (response.isOk) {
         String body = response.body;
         List jsonData = jsonDecode(body);
-        List<Book> listBook = [];
+        List<Student> listStudent = [];
 
         jsonData.forEach((j) {
-          final book = Book.fromMap(j);
-          listBook.add(book);
+          final book = Student.fromMap(j);
+          listStudent.add(book);
         });
 
-        $listBook.assignAll(listBook);
+        $listStudent.assignAll(listStudent);
       }
     } on Exception catch (e) {
       InfoService.error('Terjadi kesalahan fetch data buku.');
@@ -43,12 +43,12 @@ class BookC extends GetxController {
   }
 
   /// fungsi hapus buku
-  Future<void> deleteBook(Book book) async {
+  Future<void> deleteStudent(Student book) async {
     final lc = Get.find<LoadingController>();
 
     try {
       lc.showLoading('Menghapus buku...');
-      final r = await BookA().deleteBook(book);
+      final r = await StudentA().deleteStudent(book);
       if (!r.status.isOk) {
         // error
         InfoService.error('Terjadi kesalahan saat menghapus buku');
@@ -62,7 +62,7 @@ class BookC extends GetxController {
       e.printError();
     } finally {
       lc.stopLoading();
-      await fetchBooks();
+      await fetchStudents();
     }
   }
 }

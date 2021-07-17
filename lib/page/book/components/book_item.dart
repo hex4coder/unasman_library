@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
+import 'package:unasman_library/model/book_model.dart';
+import 'package:unasman_library/page/book/controller/bookC.dart';
 import 'package:unasman_library/util/const.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({
     Key? key,
+    required this.book,
   }) : super(key: key);
+
+  final Book book;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class BookItem extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/img/book.jpeg'),
+                  image: NetworkImage(kServerUrl + '/' + book.foto),
                 ),
               ),
             ),
@@ -48,19 +54,19 @@ class BookItem extends StatelessWidget {
                 children: [
                   FittedBox(
                     child: Text(
-                      "Visual Foxpro 9.0",
+                      "${book.judul}",
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
                   SizedBox(
                     height: kDefaultPadding / 4,
                   ),
-                  Text("SomeOne, S.Kom"),
+                  Text("${book.pengarang}"),
                   SizedBox(
                     height: kDefaultPadding,
                   ),
                   Text(
-                    "CV. Media Tangerang, Ltb",
+                    "${book.penerbit}",
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   // Divider(),
@@ -70,17 +76,20 @@ class BookItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        onPressed: () {},
-                        tooltip: 'Edit',
-                        icon: Icon(
-                          FeatherIcons.edit,
-                          color: kPrimaryColor,
-                        ),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   tooltip: 'Edit',
+                      //   icon: Icon(
+                      //     FeatherIcons.edit,
+                      //     color: kPrimaryColor,
+                      //   ),
+                      // ),
                       IconButton(
                         tooltip: 'Hapus',
-                        onPressed: () {},
+                        onPressed: () async {
+                          final c = Get.find<BookC>();
+                          await c.deleteBook(book);
+                        },
                         icon: Icon(
                           FeatherIcons.delete,
                           color: kSecondaryColor,

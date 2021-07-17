@@ -5,8 +5,9 @@ class LoadingController extends GetxController {
   var $loadingText = ''.obs;
 
   void showLoading(String loadingText) {
-    this.$loadingText.value = loadingText;
     this.$isLoading.value = true;
+    print("Show loading $loadingText");
+    this.$loadingText.value = loadingText;
   }
 
   void stopLoading() {
