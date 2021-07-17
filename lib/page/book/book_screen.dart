@@ -41,31 +41,24 @@ class BookScreen extends StatelessWidget {
 
         // app bar
         CustomAppbar(
-          leading: SizedBox(
-            width: 100,
+          leading: IconButton(
+            onPressed: () async => await c.fetchBooks(),
+            icon: Icon(
+              FeatherIcons.refreshCcw,
+              color: kPrimaryColor,
+            ),
           ),
           title: 'Daftar Buku',
           iconTitle: FeatherIcons.book,
-          trailing: Row(
-            children: [
-              IconButton(
-                onPressed: () async {
-                  await Get.toNamed(RouteName.addBook);
-                  await c.fetchBooks();
-                },
-                icon: Icon(
-                  FeatherIcons.plusCircle,
-                  color: kSecondaryColor,
-                ),
-              ),
-              IconButton(
-                onPressed: () async => await c.fetchBooks(),
-                icon: Icon(
-                  FeatherIcons.refreshCcw,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ],
+          trailing: IconButton(
+            onPressed: () async {
+              await Get.toNamed(RouteName.addBook);
+              await c.fetchBooks();
+            },
+            icon: Icon(
+              FeatherIcons.plusCircle,
+              color: kSecondaryColor,
+            ),
           ),
         ),
       ],

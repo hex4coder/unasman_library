@@ -18,7 +18,6 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   int currentIndex = 0;
   late PageController controller;
-
   final LoadingController _loadingController = Get.find<LoadingController>();
 
   @override

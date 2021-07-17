@@ -20,7 +20,7 @@ class StudentC extends GetxController {
     final lc = Get.find<LoadingController>();
 
     try {
-      lc.showLoading('Memuat data buku...');
+      lc.showLoading('Memuat data anggota...');
       final response = await StudentA().fetchStudents();
       if (response.isOk) {
         String body = response.body;
@@ -35,30 +35,30 @@ class StudentC extends GetxController {
         $listStudent.assignAll(listStudent);
       }
     } on Exception catch (e) {
-      InfoService.error('Terjadi kesalahan fetch data buku.');
+      InfoService.error('Terjadi kesalahan fetch data anggota.');
       e.printError();
     } finally {
       lc.stopLoading();
     }
   }
 
-  /// fungsi hapus buku
+  /// fungsi hapus anggota
   Future<void> deleteStudent(Student book) async {
     final lc = Get.find<LoadingController>();
 
     try {
-      lc.showLoading('Menghapus buku...');
+      lc.showLoading('Menghapus anggota...');
       final r = await StudentA().deleteStudent(book);
       if (!r.status.isOk) {
         // error
-        InfoService.error('Terjadi kesalahan saat menghapus buku');
+        InfoService.error('Terjadi kesalahan saat menghapus anggota');
         print(r.statusText);
       } else {
         // success
         InfoService.success('Buku tersebut berhasil dihapus.');
       }
     } on Exception catch (e) {
-      InfoService.error('Terjadi kesalahan fetch data buku.');
+      InfoService.error('Terjadi kesalahan fetch data anggota.');
       e.printError();
     } finally {
       lc.stopLoading();

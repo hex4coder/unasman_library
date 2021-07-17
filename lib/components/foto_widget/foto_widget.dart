@@ -21,7 +21,7 @@ class FotoWidget extends StatelessWidget {
         if (!c.isImageExists()) {
           return GestureDetector(
             child: NoImageWidget(
-              title: 'Foto $title',
+              title: '$title',
             ),
             onTap: () => c.takeNewImage(),
           );

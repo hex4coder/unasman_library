@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:unasman_library/model/student_model.dart';
 import 'package:unasman_library/util/const.dart';
 
 import 'student_text.dart';
@@ -7,7 +8,10 @@ import 'student_text.dart';
 class StudentItem extends StatelessWidget {
   const StudentItem({
     Key? key,
+    required this.student,
   }) : super(key: key);
+
+  final Student student;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class StudentItem extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/img/book.jpeg'),
+                  image: NetworkImage(kServerUrl + '/' + student.foto),
                 ),
               ),
             ),
@@ -50,14 +54,14 @@ class StudentItem extends StatelessWidget {
                 children: [
                   FittedBox(
                     child: Text(
-                      "Kaco Jirris",
+                      "${student.nama}",
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
                   SizedBox(
                     height: kDefaultPadding / 4,
                   ),
-                  Text("2012329320"),
+                  Text("${student.npm}"),
                   SizedBox(
                     height: kDefaultPadding,
                   ),
@@ -67,19 +71,19 @@ class StudentItem extends StatelessWidget {
                     children: [
                       StudentText(
                         label: 'Fakultas',
-                        text: 'Ilmu Komputer',
+                        text: '${student.fakultas}',
                       ),
                       StudentText(
                         label: 'Jurusan',
-                        text: 'Sistem Informasi',
+                        text: '${student.jurusan}',
                       ),
                       StudentText(
                         label: 'Nomor HP',
-                        text: '082284938439',
+                        text: '${student.nomorhp}',
                       ),
                       StudentText(
                         label: 'Alamat',
-                        text: 'Jln. Poros Mambu Desa Baru, Kec. Luyo',
+                        text: '${student.alamat}',
                       ),
                     ],
                   ),
@@ -91,14 +95,14 @@ class StudentItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        onPressed: () {},
-                        tooltip: 'Edit',
-                        icon: Icon(
-                          FeatherIcons.edit,
-                          color: kPrimaryColor,
-                        ),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   tooltip: 'Edit',
+                      //   icon: Icon(
+                      //     FeatherIcons.edit,
+                      //     color: kPrimaryColor,
+                      //   ),
+                      // ),
                       IconButton(
                         tooltip: 'Hapus',
                         onPressed: () {},

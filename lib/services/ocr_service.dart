@@ -61,14 +61,17 @@ class OCRService {
   }
 
   /// fungsi untuk membuka kamera untuk melakukan scan data
-  static Future<void> scan(BuildContext context) async {
+  static Future<String> scan(BuildContext context) async {
     // final crop = Crop.of(context);
     final x = await ImagePicker().getImage(source: ImageSource.camera);
+    String res = '';
 
     if (x != null) {
       String pathFilePicked = x.path;
       String d = await scanImage(pathFilePicked);
-      print(d);
+      res = d;
     }
+
+    return res;
   }
 }
